@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>アクセス・駐車場・周辺｜こぶしの湯あつま</title>
+<meta name="description" content="北海道勇払郡厚真町字本郷229番地の1。駐車場・無料EV充電器2台。周辺のパークゴルフ場・スポーツ施設・観光のご案内。">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1e3a5f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=202610210013">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231e3a5f'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='white' font-family='serif'>湯</text></svg>">
+<script src="config.js?v=202610210013"></script>
+<script src="assets/data.js?v=202610210013"></script>
+</head>
+<body data-page="access">
+<main id="main">
+  <div class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">トップ</a> ／ アクセス</div>
+      <h1>アクセス・周辺のご案内</h1>
+      <p class="lead">〒059-1605 北海道勇払郡厚真町字本郷229番地の1</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap grid grid-2" style="align-items:start">
+      <div>
+        <div class="embed" style="aspect-ratio:4/3">
+          <iframe title="こぶしの湯あつまの地図（Google マップ）" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=%E3%81%93%E3%81%B6%E3%81%97%E3%81%AE%E6%B9%AF%E3%81%82%E3%81%A4%E3%81%BE&hl=ja&z=15&output=embed"></iframe>
+        </div>
+        <div class="btn-row" style="margin-top:12px">
+          <a class="btn btn-primary" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=%E3%81%93%E3%81%B6%E3%81%97%E3%81%AE%E6%B9%AF%E3%81%82%E3%81%A4%E3%81%BE">Google マップで道順を見る</a>
+          <a class="btn btn-ghost" href="tel:0145-26-7126">電話する</a>
+        </div>
+      </div>
+      <div class="panel">
+        <table class="info-table">
+          <tr><th>住所</th><td>〒059-1605<br>北海道勇払郡厚真町字本郷229番地の1</td></tr>
+          <tr><th>電話</th><td><a href="tel:0145-26-7126">0145-26-7126</a></td></tr>
+          <tr><th>FAX</th><td>0145-26-7130</td></tr>
+          <tr><th>日帰り入浴</th><td>10:00〜22:00</td></tr>
+          <tr><th>フロント</th><td>21:00 まで</td></tr>
+          <tr id="ev"><th>駐車場</th><td>あり。<strong>EV 充電器 2 台を無料</strong>でご利用いただけます（ご利用の際はフロントへ）</td></tr>
+          <tr><th>苫小牧から</th><td>周文フェリーターミナルからのお客様も。<a href="http://www.snf.jp/embark/tomakomai.html" target="_blank" rel="noopener">フェリーターミナル</a></td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <p class="eyebrow">AROUND</p>
+      <h2>周辺のおすすめ</h2>
+      <div class="grid grid-3" id="around" style="margin-top:20px"></div>
+    </div>
+  </section>
+</main>
+
+<script src="assets/site.js?v=202610210013"></script>
+<script>
+(function () {
+  const D = SITE_DATA;
+  const desc = {
+    "厚真町役場": "町の行事・観光の情報",
+    "図書館・プラネタリウム": "雨の日のお出かけに",
+    "浜厚真野原公園サッカー場": "サッカー合宿・大会に",
+    "大沼野営場": "キャンプ・アウトドア",
+    "町内スポーツ施設": "体育館・スポーツドーム",
+    "周文フェリーターミナル": "苫小牧からのアクセス",
+    "厚幌ダム": "ダム湖の景色",
+  };
+  const items = [
+    { name: "パークゴルフ場", url: D.recommends[0].url, d: "春からシーズン。お風呂とセットで" },
+    { name: "全天候型スポーツドーム", url: D.recommends[1].url, d: "合宿の拠点に" },
+    ...D.links.map(l => ({ name: l.name, url: l.url, d: desc[l.name] || "" })),
+  ];
+  around.innerHTML = items.map(i => `
+    <a class="card" href="${i.url}" target="_blank" rel="noopener"><div class="card-body"><h3>${i.name}</h3><p>${i.d}</p><span class="card-link">サイトを開く</span></div></a>`).join("");
+})();
+</script>
+</body>
+</html>

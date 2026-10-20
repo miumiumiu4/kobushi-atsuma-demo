@@ -1,0 +1,144 @@
+<!--meta
+title: ご宴会・ご法要｜こぶしの湯あつま
+desc: ご宴会・ご法要・慶事のコース料理（お一人様3,920円〜）。厚真町内の送迎28名様まで無料。ネットでご予約の申し込みができます。
+page: party
+-->
+<main id="main">
+  <div class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">トップ</a> ／ ご宴会・ご法要</div>
+      <h1>ご宴会・ご法要</h1>
+      <p class="lead">お仲間同士、ご家族でのお食事、法事・法要、大人数の集いに。旬の素材のお料理を、心を込めてお作りします。</p>
+      <div class="subnav"><a href="#courses">コース</a><a href="#notes">ご注意</a><a href="#request">ご予約の申し込み</a></div>
+    </div>
+  </div>
+
+  <section class="section" id="courses">
+    <div class="wrap">
+      <p class="eyebrow">COURSES</p>
+      <h2>コース料理</h2>
+      <p class="muted">お一人様・税込。メニューは一例です。</p>
+      <div class="grid grid-4" id="courseList" style="margin-top:20px"></div>
+    </div>
+  </section>
+
+  <section class="section alt" id="notes">
+    <div class="wrap grid grid-2">
+      <div class="panel">
+        <h3>ご予約について</h3>
+        <ul>
+          <li><strong>7 日前まで</strong>にご予約ください。</li>
+          <li>お席のご利用は <strong>2 時間</strong>です。</li>
+          <li>季節や仕入れにより、内容が一部変わることがあります。</li>
+          <li>慶事コースの特典「祝皿の名入れ」は <strong>2 週間前まで</strong>にご予約ください。</li>
+          <li>お飲み物はコースに含まれません。単品でご注文いただけます（<a href="restaurant.html#menu">お飲み物の一覧</a>）。</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>送迎無料 <span class="tag">28 名様まで</span></h3>
+        <p>ご宴会のお客様は、厚真町内の送迎が 28 名様まで無料です。申し込みのときにお知らせください。</p>
+        <h3>オプションメニュー</h3>
+        <p class="muted">オードブルの追加などのオプションもご相談ください。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="request">
+    <div class="wrap" style="max-width:820px">
+      <p class="eyebrow">RESERVATION</p>
+      <h2>ご予約の申し込み</h2>
+      <p class="muted">送信後、こちらからお電話またはメールで確定のご連絡をします（確定まではご予約は成立していません）。</p>
+      <form class="form panel" id="partyForm" novalidate>
+        <div class="two">
+          <div class="field"><label for="p_name">お名前<span class="req">必須</span></label><input id="p_name" name="name" required autocomplete="name"><span class="err">お名前を入れてください</span></div>
+          <div class="field"><label for="p_tel">電話番号<span class="req">必須</span></label><input id="p_tel" name="tel" type="tel" required autocomplete="tel" inputmode="tel"><span class="err">電話番号を入れてください</span></div>
+        </div>
+        <div class="field"><label for="p_mail">メールアドレス</label><input id="p_mail" name="email" type="email" autocomplete="email"><span class="hint">入れていただくと、受付の控えをお送りします</span><span class="err">メールアドレスの形を確かめてください</span></div>
+        <div class="two">
+          <div class="field"><label for="p_purpose">ご用途<span class="req">必須</span></label>
+            <select id="p_purpose" name="purpose" required><option value="">選んでください</option><option>ご宴会</option><option>ご法要</option><option>慶事（お祝い）</option><option>そのほか</option></select><span class="err">選んでください</span></div>
+          <div class="field"><label for="p_course">コース<span class="req">必須</span></label>
+            <select id="p_course" name="course" required></select><span class="err">選んでください</span></div>
+        </div>
+        <div class="two">
+          <div class="field"><label for="p_date">ご希望日<span class="req">必須</span></label><input id="p_date" name="date" type="date" required><span class="hint" id="dateHint"></span><span class="err" id="dateErr">7 日以上先の日付を選んでください</span></div>
+          <div class="field"><label for="p_time">開始時刻<span class="req">必須</span></label><input id="p_time" name="time" type="time" value="17:00" step="900" required><span class="err">時刻を入れてください</span></div>
+        </div>
+        <div class="two">
+          <div class="field"><label for="p_people">人数<span class="req">必須</span></label><input id="p_people" name="people" type="number" min="1" max="200" value="10" required inputmode="numeric"><span class="err">人数を入れてください</span></div>
+          <div class="field"><label for="p_pickup">町内送迎（人数）</label><input id="p_pickup" name="pickup" type="number" min="0" max="28" value="0" inputmode="numeric"><span class="hint">28 名様まで無料。不要なら 0</span><span class="err">28 名様までです</span></div>
+        </div>
+        <div class="field" id="nameplateBox" hidden><label><input type="checkbox" name="nameplate" value="希望する"> 祝皿の名入れを希望する（2 週間前まで）</label></div>
+        <div class="field"><label for="p_note">ご要望（アレルギー・お子様の人数・お席の希望など）</label><textarea id="p_note" name="note"></textarea></div>
+        <div class="panel" style="background:var(--surface-2);box-shadow:none">
+          <div>お料理の目安 <span class="total" id="estimate">—</span></div>
+          <div class="muted">コース × 人数（お飲み物は別）</div>
+        </div>
+        <input type="hidden" name="type" value="party">
+        <button class="btn btn-primary" type="submit">この内容で申し込む</button>
+      </form>
+      <div class="panel result" id="partyDone" role="status" tabindex="-1"></div>
+    </div>
+  </section>
+</main>
+
+<script src="assets/site.js"></script>
+<script>
+(function () {
+  const D = SITE_DATA;
+  courseList.innerHTML = D.courses.map(c => `
+    <article class="card course reveal in">
+      ${c.popular ? '<span class="badge">人気</span>' : ""}${c.celebrate ? '<span class="badge">お祝い</span>' : ""}
+      <div class="card-body">
+        <h3>${c.name}</h3>
+        <div class="big-price">${c.price.toLocaleString()}<small style="font-size:.9rem">円</small></div>
+        <ol>${c.items.map(i => `<li>${i}</li>`).join("")}</ol>
+        <a class="btn btn-ghost" style="margin-top:12px" href="#request" data-course="${c.name}">このコースで申し込む</a>
+      </div>
+    </article>`).join("");
+  p_course.innerHTML = '<option value="">選んでください</option>' + D.courses.map(c => `<option value="${c.name}">${c.name}（${yen(c.price)}）</option>`).join("") + '<option value="相談したい">相談したい</option>';
+  courseList.querySelectorAll("[data-course]").forEach(a => a.addEventListener("click", () => { p_course.value = a.dataset.course; update(); }));
+
+  // 日付の下限：7 日後（名入れは 14 日後）
+  const minDays = () => partyForm.nameplate.checked ? 14 : 7;
+  function update() {
+    const min = dateAfter(minDays());
+    p_date.min = min;
+    dateHint.textContent = `${min.replace(/-/g, "/")} 以降を選べます`;
+    dateErr.textContent = `${minDays()} 日以上先の日付を選んでください`;
+    nameplateBox.hidden = !(p_course.value === "慶事コース" || p_purpose.value === "慶事（お祝い）");
+    if (nameplateBox.hidden) partyForm.nameplate.checked = false;
+    const c = D.courses.find(x => x.name === p_course.value);
+    const n = +p_people.value || 0;
+    estimate.textContent = c && n ? yen(c.price * n) : "—";
+  }
+  ["change", "input"].forEach(ev => partyForm.addEventListener(ev, update));
+  update();
+
+  bindForm(partyForm, {
+    extraCheck: (f) => {
+      const ok = [];
+      if (f.date.value && f.date.value < dateAfter(minDays())) ok.push("date");
+      if (+f.pickup.value > 28) ok.push("pickup");
+      return ok;
+    },
+    done: (data, res) => {
+      const c = D.courses.find(x => x.name === data.course);
+      partyDone.innerHTML = `
+        <h3>${res.demo ? "（デモ）" : ""}お申し込みを受け付けました</h3>
+        <p>${esc(data.name)} 様、ありがとうございます。こちらから確定のご連絡をします。お急ぎの場合はお電話（0145-26-7126）でどうぞ。</p>
+        <table class="info-table">
+          <tr><th>受付番号</th><td>${esc(res.id || "DEMO")}</td></tr>
+          <tr><th>日時</th><td>${esc(data.date)} ${esc(data.time)}〜（2 時間）</td></tr>
+          <tr><th>コース・人数</th><td>${esc(data.course)} × ${esc(data.people)} 名${c ? `（目安 ${yen(c.price * data.people)}）` : ""}</td></tr>
+          <tr><th>送迎</th><td>${+data.pickup ? esc(data.pickup) + " 名" : "なし"}</td></tr>
+        </table>
+        ${res.demo ? '<p class="note" style="margin-top:12px">いまはデモ表示です。Google との連携（config.js の GAS_URL）を設定すると、スプレッドシートへの記録とメール通知が動きます。</p>' : ""}
+        <div class="btn-row" style="margin-top:16px">
+          <a class="btn btn-ghost" target="_blank" rel="noopener" href="${gcalLink({ title: `こぶしの湯あつま ${data.purpose}（仮）`, date: data.date, start: data.time, end: String(+data.time.slice(0, 2) + 2).padStart(2, "0") + data.time.slice(2), details: `${data.course} × ${data.people}名。確定の連絡をお待ちください。` })}">Google カレンダーに仮で入れる</a>
+        </div>`;
+    },
+    result: partyDone,
+  });
+})();
+</script>

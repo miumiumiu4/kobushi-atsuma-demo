@@ -1,0 +1,94 @@
+<!--meta
+title: お風呂・日帰り入浴｜こぶしの湯あつま
+desc: ラドン泉・露天風呂・泡風呂・うたせ湯・水風呂・サウナ。日帰り入浴 10:00〜22:00、大人530円。
+page: spa
+-->
+<main id="main">
+  <div class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">トップ</a> ／ お風呂</div>
+      <h1>お風呂のご案内</h1>
+      <p class="lead">ゆったりお風呂で、のんびり気分。多彩なお湯で、日頃の疲れをリフレッシュしてください。</p>
+      <div class="subnav"><a href="#baths">お風呂の種類</a><a href="#dayuse">日帰り入浴・料金</a><a href="#amenity">備品・販売品</a></div>
+    </div>
+  </div>
+
+  <div class="status-strip"><div class="wrap"><span data-status="bath"></span><span data-status="sauna"></span></div></div>
+
+  <section class="section" id="baths">
+    <div class="wrap">
+      <p class="eyebrow">BATHS</p>
+      <h2>6 つのお湯</h2>
+      <div class="grid grid-3" id="bathList" style="margin-top:24px"></div>
+    </div>
+  </section>
+
+  <section class="section alt" id="dayuse">
+    <div class="wrap grid grid-2" style="align-items:start">
+      <div class="panel">
+        <p class="eyebrow">DAY USE</p>
+        <h2>日帰り入浴</h2>
+        <p>立ち寄り入浴でも、お気軽にどうぞ。ボディソープ・リンスインシャンプーもご用意しています。</p>
+        <table class="info-table">
+          <tr><th>入浴時間</th><td><strong>10:00〜22:00</strong></td></tr>
+          <tr><th>サウナ</th><td>10:00〜21:00</td></tr>
+          <tr><th>ご宿泊のお客様</th><td>0:00 まで／翌朝 6:00〜8:00</td></tr>
+        </table>
+      </div>
+      <div class="panel">
+        <h3>入浴料金</h3>
+        <ul class="price-list" id="bathPrice"></ul>
+        <h3 style="margin-top:20px">回数券 <span class="tag">おトク</span></h3>
+        <ul class="price-list" id="ticketPrice"></ul>
+        <div class="calc" style="margin-top:20px">
+          <div class="row">
+            <span>大人</span><div class="seg" id="segA"></div>
+            <span>小人</span><div class="seg" id="segC"></div>
+          </div>
+          <div>入浴料の合計 <span class="total" id="bathTotal">530円</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="amenity">
+    <div class="wrap grid grid-2">
+      <div>
+        <h2>備品</h2>
+        <div id="amenityBox"></div>
+      </div>
+      <div>
+        <h2>フロントでの販売</h2>
+        <ul class="price-list panel" id="shop"></ul>
+        <p class="muted" style="margin-top:12px">タオルをお忘れでも大丈夫。手ぶらでお越しください。</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="assets/site.js"></script>
+<script>
+(function () {
+  const D = SITE_DATA;
+  document.getElementById("bathList").innerHTML = D.baths.map(b => `
+    <article class="card reveal in">${ph("bath", b.name)}
+      <div class="card-body"><h3>${b.name}</h3><p><strong>${b.lead}</strong><br>${b.text}</p></div>
+    </article>`).join("");
+  const li = (x) => `<li><span>${x.label}</span><span class="price">${yen(x.price)}${x.per ? `<small>（1回 ${Math.round(x.price / x.per)}円）</small>` : ""}</span></li>`;
+  bathPrice.innerHTML = D.bathPrices.map(li).join("");
+  ticketPrice.innerHTML = D.bathTickets.map(li).join("");
+  shop.innerHTML = D.frontShop.map(li).join("");
+  amenityBox.innerHTML = Object.entries(D.bathAmenities).map(([k, v]) => `<h3>${k}</h3><ul class="chips" style="margin-bottom:16px">${v.map(x => `<li>${x}</li>`).join("")}</ul>`).join("");
+
+  // 人数を選ぶと入浴料の合計が出る
+  let a = 1, c = 0;
+  const seg = (el, max, val, set) => {
+    el.innerHTML = Array.from({ length: max + 1 }, (_, i) => `<button type="button" aria-pressed="${i === val}">${i}</button>`).join("");
+    el.querySelectorAll("button").forEach((b, i) => b.addEventListener("click", () => {
+      el.querySelectorAll("button").forEach((x, j) => x.setAttribute("aria-pressed", i === j)); set(i); calc();
+    }));
+  };
+  const calc = () => bathTotal.textContent = yen(a * D.bathPrices[0].price + c * D.bathPrices[1].price);
+  seg(segA, 6, 1, v => a = v); seg(segC, 6, 0, v => c = v);
+})();
+</script>

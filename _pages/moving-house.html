@@ -1,0 +1,91 @@
+<!--meta
+title: ムービングハウスご宿泊｜こぶしの湯あつま
+desc: 移動式木造住宅を活用した宿泊施設6棟。キッチン・洗濯機・Wi-Fi付き。素泊まり1名3,000円〜。料金をその場で計算できます。
+page: moving
+-->
+<main id="main">
+  <div class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">トップ</a> ／ ムービングハウス</div>
+      <h1>ムービングハウスご宿泊</h1>
+      <p class="lead">敷地内に、ムービングハウス（移動式木造住宅）を活用した宿泊施設を 6 棟。ご家族でも、ワーキングスペースとしても。<strong>全室禁煙です。</strong></p>
+      <div class="subnav"><a href="#calc">料金を計算</a><a href="#about">建物のこと</a><a href="#equip">設備・備品</a></div>
+    </div>
+  </div>
+
+  <section class="section" id="calc">
+    <div class="wrap grid grid-2" style="align-items:start">
+      <div class="panel">
+        <p class="eyebrow">PRICE</p>
+        <h2>料金をその場で計算</h2>
+        <div class="calc">
+          <div><strong>ご利用人数（1 棟）</strong><div class="seg" id="segP" style="margin-top:6px"></div></div>
+          <div><strong>泊数</strong><div class="seg" id="segN" style="margin-top:6px"></div></div>
+          <div>
+            <div class="muted" id="calcDetail"></div>
+            <div>合計（素泊まり・税込） <span class="total" id="calcTotal"></span></div>
+            <div class="muted" id="calcUnit"></div>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" id="askBtn" href="contact.html?type=moving">この内容で空きを問い合わせる</a>
+            <a class="btn btn-ghost" href="tel:0145-26-7126">電話で予約</a>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>1 名あたりの素泊まり料金（1 泊）</h3>
+        <ul class="price-list" id="priceTable"></ul>
+        <p class="note" style="margin-top:12px">ベッドをご利用の場合、小学生・幼児も大人と同じ料金です。<br>お食事は、センターハウス「こぶしの湯」でご用意できます。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="about">
+    <div class="wrap grid grid-2" style="align-items:center">
+      <div data-ph="house|ムービングハウスの外観" style="aspect-ratio:4/3;border-radius:14px"></div>
+      <div>
+        <p class="eyebrow">ABOUT</p>
+        <h2>災害の備えにもなる、木の家</h2>
+        <p>ムービングハウスは、災害時に応急仮設住宅としても使われる建物です。胆振東部地震でも活用されたものを、一般社団法人日本ムービングハウス協会との連携協定により寄付していただきました。</p>
+        <p>寝室・浴室・トイレ・空調を完備し、卓上 IH で自炊もできます。電源の一部には太陽光発電を使っています。</p>
+        <table class="info-table">
+          <tr><th>棟数・定員</th><td>2 名用 × 3 棟、4 名用 × 3 棟</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="equip">
+    <div class="wrap grid grid-2">
+      <div><h2>設備</h2><ul class="chips" id="facil"></ul></div>
+      <div><h2>備品（有料）</h2><ul class="chips" id="paid"></ul></div>
+    </div>
+  </section>
+</main>
+
+<script src="assets/site.js"></script>
+<script>
+(function () {
+  const M = SITE_DATA.movingHouse;
+  let p = 2, n = 1;
+  priceTable.innerHTML = Object.entries(M.pricePerPerson).map(([k, v]) => `<li><span>${k} 名でご利用</span><span class="price">${yen(v)}<small>／人</small></span></li>`).join("");
+  facil.innerHTML = M.facilities.map(x => `<li>${x}</li>`).join("");
+  paid.innerHTML = M.paidAmenities.map(x => `<li>${x}</li>`).join("");
+  const seg = (el, vals, val, set, unit) => {
+    el.innerHTML = vals.map(v => `<button type="button" aria-pressed="${v === val}">${v}${unit}</button>`).join("");
+    el.querySelectorAll("button").forEach((b, i) => b.addEventListener("click", () => {
+      el.querySelectorAll("button").forEach((x, j) => x.setAttribute("aria-pressed", i === j)); set(vals[i]); calc();
+    }));
+  };
+  function calc() {
+    const per = M.pricePerPerson[p], total = per * p * n;
+    calcDetail.textContent = `${yen(per)} × ${p} 名 × ${n} 泊`;
+    calcTotal.textContent = yen(total);
+    calcUnit.textContent = p <= 2 ? "2 名用・4 名用のどちらでもご利用いただけます" : "4 名用の棟になります（3 棟）";
+    askBtn.href = `contact.html?type=moving&people=${p}&nights=${n}`;
+  }
+  seg(segP, [1, 2, 3, 4], p, v => p = v, "名");
+  seg(segN, [1, 2, 3, 4, 5, 6, 7], n, v => n = v, "泊");
+  calc();
+})();
+</script>

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>こぶしの湯あつま｜厚真町のラドン泉・宿泊・お食事</title>
+<meta name="description" content="厚真町でラドン泉・日帰り入浴・宿泊・ランチ・合宿・宴会・法要なら、こぶしの湯あつまへ。">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1e3a5f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=202610210013">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231e3a5f'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='white' font-family='serif'>湯</text></svg>">
+<script src="config.js?v=202610210013"></script>
+<script src="assets/data.js?v=202610210013"></script>
+</head>
+<body data-page="home">
+<main id="main">
+  <section class="hero" aria-label="ご案内">
+    <div class="hero-slides" id="slides"></div>
+    <div class="wrap hero-body">
+      <h1 id="heroTitle">こぶしの湯あつまへ、ようこそ</h1>
+      <p id="heroText">ラドン泉と露天風呂、厚真の恵みのお食事。日帰りでも、泊まりでも。</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" id="heroBtn" href="spa.html">お風呂を見る</a>
+        <a class="btn btn-light" href="tel:0145-26-7126">お電話 0145-26-7126</a>
+      </div>
+      <div class="hero-dots" id="dots" role="tablist" aria-label="スライドの切り替え"></div>
+    </div>
+  </section>
+
+  <div class="status-strip">
+    <div class="wrap">
+      <strong>きょうの営業</strong>
+      <span data-status="bath"></span>
+      <span data-status="sauna"></span>
+      <span data-status="butadon"></span>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">WELCOME</p>
+      <h2>種類豊富なお風呂と、厚真の恵みのお食事</h2>
+      <p class="lead">ラドン湯・泡ぶろ・打たせ湯・露天風呂・水ぶろ・サウナ。日頃の疲れを、ゆっくりほどいてください。お食事だけ、お風呂だけのご利用も大歓迎です。</p>
+      <div class="grid grid-4" style="margin-top:28px">
+        <a class="card reveal" href="spa.html"><div data-ph="bath|露天風呂"></div><div class="card-body"><h3>お風呂</h3><p>日帰り入浴 大人530円。ラドン泉・露天・サウナ。</p><span class="card-link">お風呂のご案内</span></div></a>
+        <a class="card reveal" href="restaurant.html"><div data-ph="food|あつま豚丼"></div><div class="card-body"><h3>レストランこぶし</h3><p>名物あつま豚丼、ジンギスカン定食。</p><span class="card-link">メニューを見る</span></div></a>
+        <a class="card reveal" href="stay.html"><div data-ph="stay|客室"></div><div class="card-body"><h3>本館ご宿泊</h3><p>和室・洋室、合宿用の大広間（68畳）。</p><span class="card-link">お部屋を見る</span></div></a>
+        <a class="card reveal" href="moving-house.html"><div data-ph="house|ムービングハウス"></div><div class="card-body"><h3>ムービングハウス</h3><p>キッチン付きの一棟貸し。1名3,000円〜。</p><span class="card-link">料金を計算する</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="cta-band">
+        <div>
+          <h2>ご宿泊のご予約</h2>
+          <p>ネット予約は 24 時間受付。お電話でも承ります。</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn-primary" data-href="BOOKING_URL" target="_blank" rel="noopener">ネットで予約する</a>
+          <a class="btn btn-light" data-href="BOOKING_CHECK_URL" target="_blank" rel="noopener">予約の確認・キャンセル</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid grid-2" style="align-items:start">
+      <div>
+        <p class="eyebrow">NEWS</p>
+        <h2>お知らせ</h2>
+        <ul class="news" id="news"><li><span class="muted">読み込み中…</span></li></ul>
+        <p class="muted" style="margin-top:12px">お知らせは Google スプレッドシートから自動で表示されます。</p>
+      </div>
+      <div>
+        <p class="eyebrow">MOVIE</p>
+        <h2>動画でみる、こぶしの湯</h2>
+        <div class="embed" id="movie">
+          <button class="poster g-welcome ph" type="button" aria-label="紹介動画を再生する">
+            <span class="play"><svg width="28" height="28" viewBox="0 0 24 24" fill="#1e3a5f"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <p class="eyebrow">RECOMMEND</p>
+      <h2>おすすめ情報</h2>
+      <div class="grid grid-4" id="recommends" style="margin-top:24px"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid grid-2" style="align-items:center">
+      <div data-ph="party|ご宴会のお料理" style="aspect-ratio:4/3;border-radius:14px"></div>
+      <div>
+        <p class="eyebrow">PARTY</p>
+        <h2>ご宴会・ご法要・合宿に</h2>
+        <p class="lead">少人数の個室から和室の大広間まで。コースはお一人様 3,920円から。宴会のお客様は厚真町内の送迎が 28 名様まで無料です。</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="party.html#request">宴会のご予約・ご相談</a>
+          <a class="btn btn-ghost" href="party.html">コースを見る</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="assets/site.js?v=202610210013"></script>
+<script>
+(function () {
+  const C = SITE_CONFIG, D = SITE_DATA;
+  document.querySelectorAll("[data-href]").forEach(a => a.href = C[a.dataset.href]);
+
+  // スライド（元のサイトの 5 枚：ようこそ・グルメ・お風呂・ムービングハウス・宿泊）
+  const slides = [
+    { k: "welcome", tab: "ようこそ", t: "こぶしの湯あつまへ、ようこそ", p: "ラドン泉と露天風呂、厚真の恵みのお食事。日帰りでも、泊まりでも。", b: ["お風呂を見る", "spa.html"] },
+    { k: "food", tab: "グルメ", t: "おいしいもの、いっぱい", p: "あつま名物「豚丼」をはじめ、地元の食材を使ったメニューがたくさん。", b: ["メニューを見る", "restaurant.html"] },
+    { k: "bath", tab: "お風呂", t: "ラドン泉＆露天風呂", p: "日帰りのお客様、大歓迎。10:00〜22:00 まで。", b: ["料金と時間", "spa.html"] },
+    { k: "house", tab: "ムービングハウス", t: "ムービングハウスで、暮らすように泊まる", p: "移動式木造住宅を活用した宿泊施設 6 棟。キッチン・洗濯機付き。", b: ["料金を計算する", "moving-house.html"] },
+    { k: "stay", tab: "宿泊", t: "観光や合宿に", p: "少人数の個室から和室の大広間まで、幅広いご要望にお応えします。", b: ["お部屋を見る", "stay.html"] },
+  ];
+  const box = document.getElementById("slides"), dots = document.getElementById("dots");
+  box.innerHTML = slides.map((s, i) => `<div class="hero-slide${i ? "" : " on"}">${ph(s.k, s.tab)}</div>`).join("");
+  box.querySelectorAll(".ph").forEach(e => e.style.cssText = "position:absolute;inset:0");
+  dots.innerHTML = slides.map((s, i) => `<button type="button" role="tab" aria-selected="${!i}" class="${i ? "" : "on"}">${s.tab}</button>`).join("");
+  let cur = 0, timer;
+  const show = (i) => {
+    cur = i;
+    box.querySelectorAll(".hero-slide").forEach((e, j) => e.classList.toggle("on", j === i));
+    dots.querySelectorAll("button").forEach((e, j) => { e.classList.toggle("on", j === i); e.setAttribute("aria-selected", j === i); });
+    heroTitle.textContent = slides[i].t; heroText.textContent = slides[i].p;
+    heroBtn.textContent = slides[i].b[0]; heroBtn.href = slides[i].b[1];
+  };
+  const auto = () => { clearInterval(timer); if (!matchMedia("(prefers-reduced-motion: reduce)").matches) timer = setInterval(() => show((cur + 1) % slides.length), 6000); };
+  dots.querySelectorAll("button").forEach((b, i) => b.addEventListener("click", () => { show(i); auto(); }));
+  auto();
+
+  // おすすめ情報
+  const kinds = ["welcome", "house", "food", "stay"];
+  document.getElementById("recommends").innerHTML = D.recommends.map((r, i) => `
+    <a class="card reveal in" href="${r.url}"${r.url.startsWith("http") ? ' target="_blank" rel="noopener"' : ""}>
+      ${ph(kinds[i], r.title)}
+      <div class="card-body"><h3>${r.title}</h3><p>${r.text}</p><span class="card-link">${r.link}</span></div>
+    </a>`).join("");
+
+  // 動画（押してから YouTube を読み込む＝ページが速い）
+  document.querySelector("#movie .poster").addEventListener("click", function () {
+    this.outerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${C.YOUTUBE_ID}?autoplay=1" title="こぶしの湯あつま 紹介動画" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+  });
+
+  // お知らせ
+  loadNews().then(items => {
+    document.getElementById("news").innerHTML = items.slice(0, 5).map(n =>
+      `<li><time datetime="${esc(n.date)}">${esc(n.date).replace(/-/g, ".")}</time><span class="tag">${esc(n.tag || "お知らせ")}</span><span>${/^https?:\/\//.test(n.url || "") ? `<a href="${esc(n.url)}">${esc(n.title)}</a>` : esc(n.title)}</span></li>`).join("");
+  });
+})();
+</script>
+</body>
+</html>

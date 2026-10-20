@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>お問い合わせ｜こぶしの湯あつま</title>
+<meta name="description" content="ご宿泊・空室・合宿・観光などのお問い合わせ。お電話 0145-26-7126、またはフォームから。">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1e3a5f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=202610210013">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231e3a5f'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='white' font-family='serif'>湯</text></svg>">
+<script src="config.js?v=202610210013"></script>
+<script src="assets/data.js?v=202610210013"></script>
+</head>
+<body data-page="contact">
+<main id="main">
+  <div class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">トップ</a> ／ お問い合わせ</div>
+      <h1>お問い合わせ</h1>
+      <p class="lead">ご宿泊や観光のことなど、どうぞお気軽に。お急ぎの方はお電話がいちばん早く確実です。</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap grid grid-2" style="align-items:start">
+      <div class="panel">
+        <p class="eyebrow">TEL</p>
+        <h2>お電話でのご予約・お問い合わせ</h2>
+        <p><a class="btn btn-primary" href="tel:0145-26-7126" style="font-size:1.3rem">☎ 0145-26-7126</a></p>
+        <table class="info-table">
+          <tr><th>FAX</th><td>0145-26-7130</td></tr>
+          <tr><th>フロント</th><td>21:00 まで（以後、翌 7:30 までは警備員が対応）</td></tr>
+          <tr><th>ネット予約</th><td><a data-href="BOOKING_URL" target="_blank" rel="noopener">宿泊のご予約</a> ／ <a data-href="BOOKING_CHECK_URL" target="_blank" rel="noopener">確認・キャンセル</a></td></tr>
+          <tr><th>ご宴会・ご法要</th><td><a href="party.html#request">専用の申し込みフォーム</a></td></tr>
+        </table>
+      </div>
+
+      <div>
+        <p class="eyebrow">FORM</p>
+        <h2>フォームでのお問い合わせ</h2>
+        <p class="muted">翌営業日までにお返事します。</p>
+        <form class="form panel" id="contactForm" novalidate>
+          <fieldset class="field" style="border:0;padding:0;margin:0">
+            <legend style="font-weight:700;font-size:.92rem;margin-bottom:6px">ご用件<span class="req">必須</span></legend>
+            <div class="type-pick" id="typePick">
+              <label><input type="radio" name="type" value="general" checked><span><b>一般のお問い合わせ</b><small>観光・お風呂・レストランなど</small></span></label>
+              <label><input type="radio" name="type" value="stay"><span><b>本館の空室</b><small>和室・洋室</small></span></label>
+              <label><input type="radio" name="type" value="moving"><span><b>ムービングハウスの空き</b><small>キッチン付き一棟</small></span></label>
+              <label><input type="radio" name="type" value="camp"><span><b>合宿のご相談</b><small>研修室 39 名まで</small></span></label>
+            </div>
+          </fieldset>
+          <div class="two">
+            <div class="field"><label for="c_name">お名前<span class="req">必須</span></label><input id="c_name" name="name" required autocomplete="name"><span class="err">お名前を入れてください</span></div>
+            <div class="field"><label for="c_tel">電話番号<span class="req">必須</span></label><input id="c_tel" name="tel" type="tel" required autocomplete="tel" inputmode="tel"><span class="err">電話番号を入れてください</span></div>
+          </div>
+          <div class="field"><label for="c_mail">メールアドレス</label><input id="c_mail" name="email" type="email" autocomplete="email"><span class="err">メールアドレスの形を確かめてください</span></div>
+          <div id="stayFields" hidden>
+            <div class="two">
+              <div class="field"><label for="c_in">チェックイン日<span class="req">必須</span></label><input id="c_in" name="checkin" type="date"><span class="err">日付を選んでください</span></div>
+              <div class="field"><label for="c_nights">泊数</label><input id="c_nights" name="nights" type="number" min="1" max="30" value="1" inputmode="numeric"></div>
+            </div>
+            <div class="field"><label for="c_people">人数</label><input id="c_people" name="people" type="number" min="1" max="60" value="2" inputmode="numeric"><span class="hint" id="peopleHint"></span></div>
+          </div>
+          <div class="field"><label for="c_msg">お問い合わせ内容<span class="req">必須</span></label><textarea id="c_msg" name="message" required></textarea><span class="err">内容を入れてください</span></div>
+          <p class="muted">いただいた情報は、お返事とご予約のためだけに使います。</p>
+          <button class="btn btn-primary" type="submit">送信する</button>
+        </form>
+        <div class="panel result" id="contactDone" role="status" tabindex="-1"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="assets/site.js?v=202610210013"></script>
+<script>
+(function () {
+  document.querySelectorAll("[data-href]").forEach(a => a.href = SITE_CONFIG[a.dataset.href]);
+  const f = contactForm, q = new URLSearchParams(location.search);
+  if (q.get("type")) { const r = f.querySelector(`input[name=type][value="${q.get("type")}"]`); if (r) r.checked = true; }
+  if (q.get("people")) f.people.value = q.get("people");
+  if (q.get("nights")) f.nights.value = q.get("nights");
+  f.checkin.min = dateAfter(0);
+  const sync = () => {
+    const t = f.type.value, stay = t !== "general";
+    stayFields.hidden = !stay;
+    f.checkin.required = stay;
+    peopleHint.textContent = t === "moving" ? "1 棟 4 名まで" : t === "camp" ? "研修室は 39 名まで（原則、学生のみ）" : "和室は 4 名、洋室は 2 名まで";
+    if (!f.message.value || f.message.dataset.auto) {
+      const tmpl = { stay: "本館の空室を知りたいです。", moving: "ムービングハウスの空きを知りたいです。", camp: "合宿の利用について相談したいです。（競技・学校名・期間など）", general: "" }[t];
+      f.message.value = tmpl; f.message.dataset.auto = tmpl ? "1" : "";
+    }
+  };
+  f.message.addEventListener("input", () => f.message.dataset.auto = "");
+  f.addEventListener("change", sync); sync();
+
+  const LABEL = { general: "一般のお問い合わせ", stay: "本館の空室", moving: "ムービングハウスの空き", camp: "合宿のご相談" };
+  bindForm(f, {
+    result: contactDone,
+    done: (d, res) => {
+      contactDone.innerHTML = `
+        <h3>${res.demo ? "（デモ）" : ""}お問い合わせを受け付けました</h3>
+        <p>${esc(d.name)} 様、ありがとうございます。翌営業日までにお返事します。</p>
+        <table class="info-table">
+          <tr><th>受付番号</th><td>${esc(res.id || "DEMO")}</td></tr>
+          <tr><th>ご用件</th><td>${LABEL[d.type]}</td></tr>
+          ${d.type !== "general" ? `<tr><th>日程</th><td>${esc(d.checkin)} から ${esc(d.nights)} 泊・${esc(d.people)} 名</td></tr>` : ""}
+        </table>
+        ${res.demo ? '<p class="note" style="margin-top:12px">いまはデモ表示です。Google との連携（config.js の GAS_URL）を設定すると、スプレッドシートへの記録とメール通知が動きます。</p>' : ""}`;
+    },
+  });
+})();
+</script>
+</body>
+</html>
