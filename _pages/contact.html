@@ -7,6 +7,7 @@ page: contact
   <div class="page-head">
     <div class="wrap">
       <div class="crumbs"><a href="index.html">トップ</a> ／ お問い合わせ</div>
+      <span class="en">Contact</span>
       <h1>お問い合わせ</h1>
       <p class="lead">ご宿泊や観光のことなど、どうぞお気軽に。お急ぎの方はお電話がいちばん早く確実です。</p>
     </div>
@@ -70,6 +71,7 @@ page: contact
   if (q.get("type")) { const r = f.querySelector(`input[name=type][value="${q.get("type")}"]`); if (r) r.checked = true; }
   if (q.get("people")) f.people.value = q.get("people");
   if (q.get("nights")) f.nights.value = q.get("nights");
+  if (q.get("checkin") && q.get("checkin") >= dateAfter(0)) f.checkin.value = q.get("checkin");
   f.checkin.min = dateAfter(0);
   const sync = () => {
     const t = f.type.value, stay = t !== "general";

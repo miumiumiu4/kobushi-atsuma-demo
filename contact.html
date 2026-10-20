@@ -6,20 +6,21 @@
 <title>お問い合わせ｜こぶしの湯あつま</title>
 <meta name="description" content="ご宿泊・空室・合宿・観光などのお問い合わせ。お電話 0145-26-7126、またはフォームから。">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#1e3a5f">
+<meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=202610210013">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231e3a5f'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='white' font-family='serif'>湯</text></svg>">
-<script src="config.js?v=202610210013"></script>
-<script src="assets/data.js?v=202610210013"></script>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Shippori+Mincho+B1:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=202610210030">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231a1a1a'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='white' font-family='serif'>湯</text></svg>">
+<script src="config.js?v=202610210030"></script>
+<script src="assets/data.js?v=202610210030"></script>
 </head>
 <body data-page="contact">
 <main id="main">
   <div class="page-head">
     <div class="wrap">
       <div class="crumbs"><a href="index.html">トップ</a> ／ お問い合わせ</div>
+      <span class="en">Contact</span>
       <h1>お問い合わせ</h1>
       <p class="lead">ご宿泊や観光のことなど、どうぞお気軽に。お急ぎの方はお電話がいちばん早く確実です。</p>
     </div>
@@ -75,7 +76,7 @@
   </section>
 </main>
 
-<script src="assets/site.js?v=202610210013"></script>
+<script src="assets/site.js?v=202610210030"></script>
 <script>
 (function () {
   document.querySelectorAll("[data-href]").forEach(a => a.href = SITE_CONFIG[a.dataset.href]);
@@ -83,6 +84,7 @@
   if (q.get("type")) { const r = f.querySelector(`input[name=type][value="${q.get("type")}"]`); if (r) r.checked = true; }
   if (q.get("people")) f.people.value = q.get("people");
   if (q.get("nights")) f.nights.value = q.get("nights");
+  if (q.get("checkin") && q.get("checkin") >= dateAfter(0)) f.checkin.value = q.get("checkin");
   f.checkin.min = dateAfter(0);
   const sync = () => {
     const t = f.type.value, stay = t !== "general";

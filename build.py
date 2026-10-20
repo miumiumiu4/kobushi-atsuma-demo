@@ -10,7 +10,7 @@ for src in sorted((root / "_pages").glob("*.html")):
     body = t[m.end():]
     html = head.replace("__TITLE__", meta["title"]).replace("__DESC__", meta["desc"])
     html += f'<body data-page="{meta["page"]}">\n{body}</body>\n</html>\n'
-    for a in ("assets/style.css", "assets/site.js", "assets/data.js", "config.js"):
+    for a in ("assets/style.css", "assets/site.js", "assets/booking.js", "assets/data.js", "config.js"):
         html = html.replace(f'"{a}"', f'"{a}?v={V}"')
     (root / src.name).write_text(html)
     print("built", src.name)

@@ -6,24 +6,26 @@
 <title>アクセス・駐車場・周辺｜こぶしの湯あつま</title>
 <meta name="description" content="北海道勇払郡厚真町字本郷229番地の1。駐車場・無料EV充電器2台。周辺のパークゴルフ場・スポーツ施設・観光のご案内。">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#1e3a5f">
+<meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=202610210013">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231e3a5f'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='white' font-family='serif'>湯</text></svg>">
-<script src="config.js?v=202610210013"></script>
-<script src="assets/data.js?v=202610210013"></script>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Shippori+Mincho+B1:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=202610210030">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231a1a1a'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='white' font-family='serif'>湯</text></svg>">
+<script src="config.js?v=202610210030"></script>
+<script src="assets/data.js?v=202610210030"></script>
 </head>
 <body data-page="access">
 <main id="main">
   <div class="page-head">
     <div class="wrap">
       <div class="crumbs"><a href="index.html">トップ</a> ／ アクセス</div>
+      <span class="en">Access</span>
       <h1>アクセス・周辺のご案内</h1>
       <p class="lead">〒059-1605 北海道勇払郡厚真町字本郷229番地の1</p>
     </div>
   </div>
+  <div class="wrap"><div class="page-visual" data-ph="welcome|Atsuma"></div></div>
 
   <section class="section">
     <div class="wrap grid grid-2" style="align-items:start">
@@ -60,7 +62,7 @@
   </section>
 </main>
 
-<script src="assets/site.js?v=202610210013"></script>
+<script src="assets/site.js?v=202610210030"></script>
 <script>
 (function () {
   const D = SITE_DATA;
@@ -79,7 +81,7 @@
     ...D.links.map(l => ({ name: l.name, url: l.url, d: desc[l.name] || "" })),
   ];
   around.innerHTML = items.map(i => `
-    <a class="card" href="${i.url}" target="_blank" rel="noopener"><div class="card-body"><h3>${i.name}</h3><p>${i.d}</p><span class="card-link">サイトを開く</span></div></a>`).join("");
+    <a class="card boxed" href="${i.url}" target="_blank" rel="noopener"><div class="card-body"><h3>${i.name}</h3><p>${i.d}</p><span class="card-link">サイトを開く</span></div></a>`).join("");
 })();
 </script>
 </body>

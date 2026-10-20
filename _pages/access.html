@@ -7,10 +7,12 @@ page: access
   <div class="page-head">
     <div class="wrap">
       <div class="crumbs"><a href="index.html">トップ</a> ／ アクセス</div>
+      <span class="en">Access</span>
       <h1>アクセス・周辺のご案内</h1>
       <p class="lead">〒059-1605 北海道勇払郡厚真町字本郷229番地の1</p>
     </div>
   </div>
+  <div class="wrap"><div class="page-visual" data-ph="welcome|Atsuma"></div></div>
 
   <section class="section">
     <div class="wrap grid grid-2" style="align-items:start">
@@ -66,6 +68,6 @@ page: access
     ...D.links.map(l => ({ name: l.name, url: l.url, d: desc[l.name] || "" })),
   ];
   around.innerHTML = items.map(i => `
-    <a class="card" href="${i.url}" target="_blank" rel="noopener"><div class="card-body"><h3>${i.name}</h3><p>${i.d}</p><span class="card-link">サイトを開く</span></div></a>`).join("");
+    <a class="card boxed" href="${i.url}" target="_blank" rel="noopener"><div class="card-body"><h3>${i.name}</h3><p>${i.d}</p><span class="card-link">サイトを開く</span></div></a>`).join("");
 })();
 </script>

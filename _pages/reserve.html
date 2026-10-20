@@ -1,0 +1,131 @@
+<!--meta
+title: 空室検索・ご予約｜こぶしの湯あつま
+desc: 日程と人数を選ぶだけで、選べるお部屋・料金・予約の方法がひと目でわかります。宿泊・宴会・合宿のご予約はこちら。
+page: reserve
+-->
+<main id="main">
+  <div class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">トップ</a> ／ 空室検索・ご予約</div>
+      <span class="en">Reservation</span>
+      <h1>空室検索・ご予約</h1>
+      <p class="lead">日程と人数を選ぶと、選べるお部屋と料金、予約の方法がひと目でわかります。</p>
+    </div>
+  </div>
+
+  <section class="section tight" style="padding-top:0">
+    <div class="wrap">
+      <div id="booking" class="booking" style="margin-top:0"></div>
+    </div>
+  </section>
+
+  <section class="section tight" id="results" style="padding-top:0">
+    <div class="wrap">
+      <div class="summary-bar" id="summary"></div>
+      <div id="plans"></div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <p class="eyebrow">How to book</p>
+      <h2>ご予約の流れ</h2>
+      <ol class="steps" style="margin-top:28px">
+        <li><b>日程と人数を選ぶ</b><span>上の「空室を検索」で、泊まれるお部屋と料金の目安が出ます。</span></li>
+        <li><b>予約の方法を選ぶ</b><span>本館はネット予約かお電話。ムービングハウス・合宿はお問い合わせかお電話で。</span></li>
+        <li><b>確定のご連絡</b><span>お問い合わせの場合は、こちらから空き状況と確定のご連絡をします。</span></li>
+        <li><b>当日</b><span>チェックイン 15:00 から。フロントは 21:00 まで、以後は警備員が対応します。</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid grid-3">
+      <a class="card boxed" href="party.html#request"><div class="card-body"><p class="eyebrow">Banquet</p><h3>ご宴会・ご法要</h3><p>コースはお一人様 3,920円から。7 日前までにネットで申し込めます。</p><span class="card-link">申し込む</span></div></a>
+      <a class="card boxed" href="contact.html?type=camp"><div class="card-body"><p class="eyebrow">Training camp</p><h3>スポーツ合宿</h3><p>研修室（68畳）は 39 名まで宿泊できます。原則、学生のみ。</p><span class="card-link">相談する</span></div></a>
+      <a class="card boxed" data-href="BOOKING_CHECK_URL" target="_blank" rel="noopener"><div class="card-body"><p class="eyebrow">Your booking</p><h3>予約の確認・キャンセル</h3><p>ネット予約をされた方は、予約システムの画面から確認・キャンセルができます。</p><span class="card-link">確認画面へ（外部）</span></div></a>
+    </div>
+  </section>
+</main>
+
+<script src="assets/site.js"></script>
+<script src="assets/booking.js"></script>
+<script>
+(function () {
+  const C = SITE_CONFIG, D = SITE_DATA, M = D.movingHouse;
+  document.querySelectorAll("[data-href]").forEach(a => a.href = C[a.dataset.href]);
+  const bk = mountBooking(document.getElementById("booking"), { onSearch: (s) => {
+    history.replaceState(null, "", "reserve.html?" + new URLSearchParams({ room: s.room, in: s.cin, out: s.cout, people: s.people }) + "#results");
+    show(s);
+    document.getElementById("results").scrollIntoView({ behavior: "smooth" });
+  }});
+
+  function show(s) {
+    const n = nightsBetween(s.cin, s.cout), p = s.people;
+    const range = `${jpDate(s.cin)} 〜 ${jpDate(s.cout)}`;
+    summary.innerHTML = `<span class="muted">ご希望</span><b>${range}</b><span>${n}泊 ・ ${p}名</span><a class="text-link" href="#booking">条件を変える</a>`;
+    const want = (k) => s.room === "all" || s.room === k;
+    const ask = (type) => `contact.html?${new URLSearchParams({ type, checkin: s.cin, nights: n, people: p })}`;
+    const memo = `${range}・${n}泊・${p}名`;
+    const cards = [];
+
+    if (want("moving")) {
+      const ok = p <= 4, per = M.pricePerPerson[p];
+      cards.push({ ok, html: `
+        ${ph("house", "Moving house")}
+        <div class="plan-body">
+          <p class="eyebrow">Cabin</p>
+          <h3>ムービングハウス（一棟貸し）</h3>
+          <p class="muted">キッチン・洗濯機・Wi-Fi 付きの木の家。2 名用 3 棟、4 名用 3 棟。全室禁煙。</p>
+          <ul class="chips"><li>IH キッチン</li><li>バスルーム</li><li>洗濯機</li><li>エアコン</li><li>Wi-Fi</li></ul>
+          <p style="margin-top:12px">${ok ? `<span class="ok">● ${p <= 2 ? "2 名用・4 名用" : "4 名用"}の棟に泊まれます</span>` : `<span class="ng">● 1 棟 4 名まで。${Math.ceil(p / 4)} 棟以上に分かれてのご利用になります</span>`}</p>
+        </div>
+        <div class="plan-side">
+          ${ok ? `<div class="plan-price">${yen(per * p * n)}<small>素泊まり・税込（${yen(per)} × ${p}名 × ${n}泊）</small></div>` : `<div class="plan-price" style="font-size:1.1rem">料金はお問い合わせください</div>`}
+          <a class="btn btn-primary" href="${ask("moving")}">この日程で空きを確認する</a>
+          <a class="btn" href="tel:${D.tel}">電話で予約 ${D.tel}</a>
+        </div>` });
+    }
+    if (want("main")) {
+      D.rooms.forEach((r) => {
+        const rooms = Math.ceil(p / r.cap);
+        cards.push({ ok: true, html: `
+          ${ph("stay", r.name)}
+          <div class="plan-body">
+            <p class="eyebrow">Main building</p>
+            <h3>本館 ${r.name}</h3>
+            <p class="muted">${r.rooms} ／ 定員 ${r.cap} 名 ／ 全室禁煙</p>
+            <ul class="chips">${r.facilities.map((f) => `<li>${f}</li>`).join("")}<li>浴衣・タオル・歯ブラシ</li></ul>
+            <p style="margin-top:12px"><span class="ok">● ${rooms === 1 ? "1 室" : rooms + " 室"}でご利用いただけます</span></p>
+          </div>
+          <div class="plan-side">
+            <div class="plan-price" style="font-size:1.1rem">料金はお電話・予約画面でご案内<small>大浴場（ラドン泉・露天風呂）付き</small></div>
+            <a class="btn btn-primary" href="${C.BOOKING_URL}" target="_blank" rel="noopener">ネット予約へ（外部の予約画面）</a>
+            <div class="copybox"><span>予約画面で選ぶ日程：<b>${memo}</b></span></div>
+            <a class="btn" href="${ask("stay")}">空室を問い合わせる</a>
+          </div>` });
+      });
+    }
+    if (s.room === "camp" || (s.room === "all" && p >= 10)) {
+      const ok = p <= 39;
+      cards.push({ ok, html: `
+        ${ph("stay", "Training room")}
+        <div class="plan-body">
+          <p class="eyebrow">Training camp</p>
+          <h3>多目的研修室（68畳）・合宿</h3>
+          <p class="muted">あつまドームを使った合宿に。39 名まで宿泊できます。原則、学生のみのご利用です。</p>
+          <p>${ok ? '<span class="ok">● この人数で泊まれます</span>' : '<span class="ng">● 39 名を超えるため、ご相談ください</span>'}</p>
+        </div>
+        <div class="plan-side">
+          <div class="plan-price" style="font-size:1.1rem">料金はご相談ください</div>
+          <a class="btn btn-primary" href="${ask("camp")}">合宿を相談する</a>
+          <a class="btn" href="tel:${D.tel}">電話 ${D.tel}</a>
+        </div>` });
+    }
+    cards.sort((a, b) => b.ok - a.ok);
+    plans.innerHTML = cards.map((c) => `<article class="plan${c.ok ? "" : " dim"}">${c.html}</article>`).join("") +
+      `<p class="muted" style="margin-top:20px">空室は、予約画面またはお問い合わせで確かめます。ムービングハウスの料金は元のサイトの料金表から計算しています。</p>`;
+  }
+  show(bk);
+})();
+</script>

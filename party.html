@@ -6,25 +6,27 @@
 <title>ご宴会・ご法要｜こぶしの湯あつま</title>
 <meta name="description" content="ご宴会・ご法要・慶事のコース料理（お一人様3,920円〜）。厚真町内の送迎28名様まで無料。ネットでご予約の申し込みができます。">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#1e3a5f">
+<meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=202610210013">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231e3a5f'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='white' font-family='serif'>湯</text></svg>">
-<script src="config.js?v=202610210013"></script>
-<script src="assets/data.js?v=202610210013"></script>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Shippori+Mincho+B1:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=202610210030">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231a1a1a'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='white' font-family='serif'>湯</text></svg>">
+<script src="config.js?v=202610210030"></script>
+<script src="assets/data.js?v=202610210030"></script>
 </head>
 <body data-page="party">
 <main id="main">
   <div class="page-head">
     <div class="wrap">
       <div class="crumbs"><a href="index.html">トップ</a> ／ ご宴会・ご法要</div>
+      <span class="en">Banquet</span>
       <h1>ご宴会・ご法要</h1>
       <p class="lead">お仲間同士、ご家族でのお食事、法事・法要、大人数の集いに。旬の素材のお料理を、心を込めてお作りします。</p>
       <div class="subnav"><a href="#courses">コース</a><a href="#notes">ご注意</a><a href="#request">ご予約の申し込み</a></div>
     </div>
   </div>
+  <div class="wrap"><div class="page-visual" data-ph="party|Banquet"></div></div>
 
   <section class="section" id="courses">
     <div class="wrap">
@@ -95,7 +97,7 @@
   </section>
 </main>
 
-<script src="assets/site.js?v=202610210013"></script>
+<script src="assets/site.js?v=202610210030"></script>
 <script>
 (function () {
   const D = SITE_DATA;
@@ -125,6 +127,10 @@
     const n = +p_people.value || 0;
     estimate.textContent = c && n ? yen(c.price * n) : "—";
   }
+  const q = new URLSearchParams(location.search);
+  if (q.get("course")) p_course.value = q.get("course");
+  if (q.get("people")) p_people.value = q.get("people");
+  if (q.get("date") && q.get("date") >= dateAfter(7)) p_date.value = q.get("date");
   ["change", "input"].forEach(ev => partyForm.addEventListener(ev, update));
   update();
 

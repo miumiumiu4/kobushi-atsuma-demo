@@ -7,11 +7,13 @@ page: party
   <div class="page-head">
     <div class="wrap">
       <div class="crumbs"><a href="index.html">トップ</a> ／ ご宴会・ご法要</div>
+      <span class="en">Banquet</span>
       <h1>ご宴会・ご法要</h1>
       <p class="lead">お仲間同士、ご家族でのお食事、法事・法要、大人数の集いに。旬の素材のお料理を、心を込めてお作りします。</p>
       <div class="subnav"><a href="#courses">コース</a><a href="#notes">ご注意</a><a href="#request">ご予約の申し込み</a></div>
     </div>
   </div>
+  <div class="wrap"><div class="page-visual" data-ph="party|Banquet"></div></div>
 
   <section class="section" id="courses">
     <div class="wrap">
@@ -112,6 +114,10 @@ page: party
     const n = +p_people.value || 0;
     estimate.textContent = c && n ? yen(c.price * n) : "—";
   }
+  const q = new URLSearchParams(location.search);
+  if (q.get("course")) p_course.value = q.get("course");
+  if (q.get("people")) p_people.value = q.get("people");
+  if (q.get("date") && q.get("date") >= dateAfter(7)) p_date.value = q.get("date");
   ["change", "input"].forEach(ev => partyForm.addEventListener(ev, update));
   update();
 
